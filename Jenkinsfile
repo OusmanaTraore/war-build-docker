@@ -14,11 +14,11 @@ node {
          
       }
       stage ('Run'){
-          img.withRun("--name run-$BUILD_ID -p 8081:8081") { c ->
+          img.withRun("--name run-$BUILD_ID -p 8082:8082") { c ->
           sh 'docker ps'
           sh 'netstat - ntaup'
           sh 'sleep 30s'
-          sh 'curl 127.0.0.1:8081'
+          sh 'curl 127.0.0.1:8082'
           sh 'docker ps'
           
       }
