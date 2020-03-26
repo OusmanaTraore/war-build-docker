@@ -14,7 +14,7 @@ node {
          
       }
       stage ('Run'){
-          img.withRun("--name run-$BUILD_ID -p 8082:8080") { c ->
+          img.withRun("--name run-$BUILD_ID -p 8082:8082") { c ->
           sh 'docker ps'
           sh 'netstat - ntaup'
           sh 'sleep 3s'
