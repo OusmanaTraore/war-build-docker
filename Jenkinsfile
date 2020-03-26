@@ -1,7 +1,7 @@
 def pipelineContext = [:]
 node {
     def registryProjet ='registry.gitlab.com/youssouy/docker-gitlab'
-    def IMAGE= "${registryProjet}:version-${env.BUILD_ID}"
+    def IMAGE= "${registryProjet}:wartest-${env.BUILD_ID}"
     
       stage ('Clone') {
           git 'https://github.com/OusmanaTraore/war-build-docker.git'
@@ -22,5 +22,10 @@ node {
           sh 'docker ps'
           
       }
-}
+      stage ('Push'){
+          docker.withRegistry('https://registry.gitlab.com', 'reg1'){
+             img.push 'latest'
+             img.push()
+            }
+      }
 }
