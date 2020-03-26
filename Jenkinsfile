@@ -17,7 +17,7 @@ node {
           img.withRun("--name run-$BUILD_ID -p 8082:8082") { c ->
           sh 'docker ps'
           sh 'netstat - ntaup'
-          sh 'sleep 8s'
+          sh 'sleep 3s'
           sh 'curl 127.0.0.1:8080'
           sh 'docker ps'
           
